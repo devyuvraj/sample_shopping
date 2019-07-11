@@ -1,0 +1,102 @@
+<!--Display Products Gallery-->
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <?php
+        $qry = "SELECT * FROM productinfo";
+        $rs = $con->readrecord($qry);
+        $prdct = "";
+        while($row = mysqli_fetch_array($rs))
+        {
+            $prdct.="<div class='col-md-3 my-2 mr-2'>";
+            $prdct.="<a href='productdescription.php' title='view More'><img src='../admin/$row[photo]' alt='product' class='img-responsive p-1' height='150px;'></a>";
+            $prdct.="<div class='text-center'>";
+            $prdct.="<h6 class=''>$row[productname]</h6>";
+            $prdct.="<p class=''>$row[actulprice]/-Rs</p>";
+            $prdct.="<a href='productdescription.php' class='btn btn-primary'>View More>></a>";
+            $prdct.="</div>";
+            $prdct.="</div>";
+        }
+        echo $prdct;
+        ?>
+    </div>
+</div>
+<!--//Display Products Gallery-->
+
+/* echo "
+            <div class='com-md-4'>
+            <div class='card my-2' style='width: 18rem'>
+            <img class='card-img-top img-responsive' src='../admin/$photo' alt='Products' 'height:160px;' />
+            <div class='card-body'>
+              <h5 class='card-title'>$productname</h5>
+              <p class='card-text'>$actulprice .Rs/-</p>
+              <a href='' class='btn btn-primary'>Go somewhere</a>
+            </div>
+          </div>
+          </div>
+            ";*/
+
+
+            /*echo "
+            <div class='col-md-4 my-2 border border-dark'>
+                <div class='panel-heading'>$productname</div>
+                <div class='panel-body'>
+                    <img src='../admin/$photo' style='width:160px; heigth:160px;' class='img-responsive img-fluid my-2' />
+                </div>
+                <div class='panel-heading'>
+                    $actulprice
+                </div>
+                <button class='btn btn-primary'>View More>></button>
+            </div>
+            ";*/
+
+/*
+<div class="row">
+        <?php
+        $search = "";
+        if(isset($_POST["btnsearch"]))
+        {
+            $search = $_POST["search"];
+        }
+        $qry = "SELECT * FROM productinfo WHERE productname LIKE '%$search%'";
+        $rs = $con->readrecord($qry);
+        while($row = mysqli_fetch_array($rs))
+        {
+            $catid = $row["catid"];
+            $catname = $row["catname"];
+            $subcatname = $row["subcatname"];
+            $productname = $row["productname"];
+            $productcompany = $row["productcompany"];
+            $actulprice = $row["actulprice"];
+            $discountprice = $row["discountprice"];
+            $shipcharge = $row["shipcharge"];
+            $status = $row["status"];
+            $productdescription = $row["productdescription"];
+            $photo = $row["photo"];
+            echo "
+            <div class='col-md-3 col-sm-6 mt-3'>
+            <div class='product-grid9'>
+                <div class='product-image9'>
+                    <a href='viewproduct.php'>
+                        <img class='pic-1 img-responsive' src='../admin/$photo'>
+                        <img class='pic-2 img-responsive' src='../admin/$photo'>
+                    </a>
+                </div>
+                <div class='product-content mb-3'>
+                    <ul class='rating'>
+                        <li class='fa fa-star'></li>
+                        <li class='fa fa-star'></li>
+                        <li class='fa fa-star'></li>
+                        <li class='fa fa-star'></li>
+                        <li class='fa fa-star disable'></li>
+                    </ul>
+                    <h3 class='title'><a href='viewproduct.php'>$productname</a></h3>
+                    <div class='price'>$actulprice.Rs/-</div>
+                    <a class='add-to-cart' href='viewproduct.php?productname=<?php echo $productname; ?>'>VIEW PRODUCTS</a>
+                </div>
+            </div>
+        </div>
+            ";
+        }
+        ?>
+    </div>
+*/
